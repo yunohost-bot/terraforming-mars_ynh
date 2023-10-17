@@ -9,113 +9,58 @@
 source _common.sh
 source /usr/share/yunohost/helpers
 
-upgrade_type=$(ynh_check_app_version_changed)
+#=================================================
+# STOP AND REMOVE SERVICE
+#=================================================
+ynh_script_progression --message="Stopping and removing the systemd service..." --weight=1
+
+# Remove the dedicated systemd config
+ynh_remove_systemd_config
 
 #=================================================
-# STOP SYSTEMD SERVICE
+# REMOVE LOGROTATE CONFIGURATION
 #=================================================
-ynh_script_progression --message="Stopping a systemd service..." --weight=1
+ynh_script_progression --message="Removing logrotate configuration..." --weight=1
 
-ynh_systemd_action --service_name=$app --action="stop" --log_path="/var/log/$app/$app.log"
-
-#=================================================
-# INSTALL DEPENDENCIES
-#=================================================
-ynh_script_progression --message="Installing dependencies..." --weight=5
-
-ynh_exec_warn_less ynh_install_nodejs --nodejs_version=$nodejs_version
-
-# Upgrade NPM
-ynh_npm install --global npm@latest
-
-# Install Yarn
-ynh_npm install --global yarn
+# Remove the app-specific logrotate config
+ynh_remove_logrotate
 
 #=================================================
-# "REBUILD" THE APP (DEPLOY NEW SOURCES, RERUN NPM BUILD...)
+# REMOVE NGINX CONFIGURATION
 #=================================================
-# DOWNLOAD, CHECK AND UNPACK SOURCE
-#=================================================
-ynh_script_progression --message="Setting up source files..." --weight=1
+ynh_script_progression --message="Removing NGINX web server configuration..." --weight=1
 
-# Download, check integrity, uncompress and patch the source from app.src
-ynh_setup_source --dest_dir="$install_dir" --force-replace=1
-
-chmod 750 "$install_dir"
-chmod -R o-rwx "$install_dir"
-chown -R $app:www-data "$install_dir"
+# Remove the dedicated NGINX config
+ynh_remove_nginx_config
 
 #=================================================
-# BUILD APP
+# REMOVE DEPENDENCIES
 #=================================================
-ynh_script_progression --message="Building app... This may take quiete some time" --weight=30
+ynh_script_progression --message="Removing dependencies..." --weight=4
 
-pushd $install_dir
-    ynh_use_nodejs
-
-	ynh_script_progression --message="Fetching Yarn dev dependencies... This can be very long, be patient !" --weight=18
-	ynh_exec_warn_less ynh_exec_as $app env $ynh_node_load_PATH yarn install --network-timeout=100000
-
-	ynh_script_progression --message="Building Yarn dev dependencies... This can be very long, be patient !" --weight=25
-	ynh_exec_warn_less ynh_exec_as $app env $ynh_node_load_PATH yarn run build
-	
-	ynh_script_progression --message="Cleaning cache... " --weight=3
-	ynh_exec_warn_less sudo -u $app env $ynh_node_load_PATH yarn cache clean 2>&1
-
-popd
-
-chmod 750 "$install_dir"
-chmod -R o-rwx "$install_dir"
-chown -R $app:$app "$install_dir"
+# Remove metapackage and its dependencies
+ynh_remove_nodejs
 
 #=================================================
-# SETUP SYSTEMD
+# SPECIFIC REMOVE
 #=================================================
-ynh_script_progression --message="Configuring a systemd service..."
+# REMOVE VARIOUS FILES
+#=================================================
+ynh_script_progression --message="Removing various files..." --weight=1
 
-# Create a dedicated systemd config
-ynh_add_systemd_config
-
-#=================================================
-# GENERIC FINALIZATION
-#=================================================
-# LOGROTATE
-#=================================================
-ynh_script_progression --message="Configuring logrotate to manage application logfiles" --weight=1
-
-# Use logrotate to manage application logfile(s)
-ynh_use_logrotate --specific_user=$app
-touch /var/log/$app/$app.log
-chown -R $app:www-data /var/log/$app/
+# Remove the log files
+ynh_secure_remove --file="/var/log/$app"
 
 #=================================================
-# INTEGRATE SERVICE IN YUNOHOST
+# REMOVE SERVICE IN YUNOHOST
 #=================================================
 ynh_script_progression --message="Integrating service in YunoHost..."
 
-yunohost service add $app --log="/var/log/$app/$app.log"
+yunohost service remove $app --log="/var/log/$app/$app.log"
 
-#=================================================
-# RECONFIGURE THE APP (UPDATE CONF, APPLY MIGRATIONS...)
-#=================================================
-# UPDATE A CONFIG FILE
-#=================================================
-ynh_script_progression --message="Updating a configuration file..." --weight=1
-
-ynh_add_config --template="../conf/.env" --destination="$install_dir/.env"
-
-chmod 600 "$install_dir/.env"
-chown $app:$app "$install_dir/.env"
-
-#=================================================
-# START SYSTEMD SERVICE
-#=================================================
-ynh_script_progression --message="Starting a systemd service..." --weight=1
-
-ynh_exec_warn_less ynh_systemd_action --service_name=$app --action="start" --log_path="/var/log/$app/$app.log" --line_match=""
 
 #=================================================
 # END OF SCRIPT
 #=================================================
 
-ynh_script_progression --message="Upgrade of $app completed" --last
+ynh_script_progression --message="Removal of $app completed" --last
