@@ -53,13 +53,13 @@ pushd $install_dir
     ynh_use_nodejs
 
 	ynh_script_progression --message="Fetching Yarn dev dependencies... This can be very long, be patient !" --weight=18
-	ynh_exec_warn_less ynh_exec_as $app env $ynh_node_load_PATH yarn install --network-timeout=100000
+	ynh_exec_warn_less ynh_exec_as $app env $ynh_node_load_PATH $ynh_npm install --network-timeout=100000
 
 	ynh_script_progression --message="Building Yarn dev dependencies... This can be very long, be patient !" --weight=25
-	ynh_exec_warn_less ynh_exec_as $app env $ynh_node_load_PATH yarn run build
+	ynh_exec_warn_less ynh_exec_as $app env $ynh_node_load_PATH $ynh_npm run build
 	
 	ynh_script_progression --message="Cleaning cache... " --weight=3
-	ynh_exec_warn_less sudo -u $app env $ynh_node_load_PATH yarn cache clean 2>&1
+	ynh_exec_warn_less ynh_exec_as $app env $ynh_node_load_PATH $ynh_npm run start
 
 popd
 
