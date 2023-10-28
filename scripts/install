@@ -28,7 +28,7 @@ ynh_exec_warn_less ynh_install_nodejs --nodejs_version=$nodejs_version
 ynh_script_progression --message="Setting up source files..." --weight=1
 
 # Download, check integrity, uncompress and patch the source from app.src
-ynh_setup_source --dest_dir="$install_dir"
+#ynh_setup_source --dest_dir="$install_dir"
 
 chmod 750 "$install_dir"
 chmod -R o-rwx "$install_dir"
@@ -49,7 +49,10 @@ ynh_add_nginx_config
 # BUILD APP
 #=================================================
 
-pushd $install_dir
+cd $install_dir
+git clone https://github.com/terraforming-mars/terraforming-mars.git
+
+pushd $install_dir/terraforming-mars
     ynh_use_nodejs
 
 	ynh_script_progression --message="npm install... This can be very long, be patient !" --weight=18
