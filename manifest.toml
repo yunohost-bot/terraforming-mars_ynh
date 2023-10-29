@@ -19,7 +19,7 @@ code = "https://github.com/terraforming-mars/terraforming-mars"
 [integration]
 yunohost = ">= 11.2.4"
 architectures = "all"
-multi_instance = true
+multi_instance = false
 
 ldap = false
 sso = false
@@ -41,13 +41,7 @@ ram.runtime = "50M"
     default = "visitors"
 
  [resources]
-      [resources.sources]
-
-        #[resources.sources.main]
-        #url = "https://github.com/terraforming-mars/terraforming-mars/archive/686fa15abaa69dccfe4d8a9e91bf077978b7ae20.zip"
-       # sha256 = "5e29130fb680ba79b667ad2c41445b975993d45354b0e6ae294fe302214290a2"
-       # autoupdate.strategy = "latest_github_commit"
-
+   
     [resources.system_user]
 
     [resources.install_dir]
