@@ -17,10 +17,8 @@ ynh_script_progression --message="Installing dependencies..." --weight=5
 ynh_exec_warn_less ynh_install_nodejs --nodejs_version=$nodejs_version
 
 # Upgrade NPM
-# ynh_npm install --global npm@6.14.18
+ynh_npm install --global npm
 
-# Install Yarn
-# ynh_npm install --global yarn
 
 #=================================================
 # DOWNLOAD, CHECK AND UNPACK SOURCE
@@ -62,7 +60,7 @@ pushd $install_dir/terraforming-mars
 	ynh_exec_warn_less env $ynh_node_load_PATH $ynh_npm run build
 	
 	ynh_script_progression --message="Cleaning cache... " --weight=3
-	ynh_exec_warn_less ynh_exec_as $app env $ynh_node_load_PATH $ynh_npm run start
+	ynh_exec_warn_less ynh_exec_as $app env $ynh_node_load_PATH $ynh_npm cache clean
 
 popd
 
