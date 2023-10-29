@@ -38,7 +38,7 @@ cd $install_dir
 ynh_exec_warn_less git clone https://github.com/terraforming-mars/terraforming-mars.git
 
 cd $install_dir/terraforming-mars
-git checkout $TM_version
+ynh_exec_warn_less git checkout $TM_version
 
 pushd $install_dir/terraforming-mars
     ynh_use_nodejs
