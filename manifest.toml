@@ -59,7 +59,7 @@ ram.runtime = "50M"
     main.url = "/"
 
     [resources.ports]
-    main.port = 8080
+    main.default = 8080
 
     [resources.apt]
     packages = "postgresql, postgresql-contrib"
