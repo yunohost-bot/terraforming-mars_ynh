@@ -1,1 +1,1 @@
-Ceci est une fausse description des fonctionalités de l'app
+Cette application est une implémentation en ligne et open source de l’excellent jeu de plateau Terraforming mars. Elle n’est affiliée à FryxGames, Asmodee Digital ou Steam en aucun cas.
