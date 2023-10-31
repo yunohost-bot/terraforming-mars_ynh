@@ -39,7 +39,13 @@ ynh_remove_nginx_config
 ynh_script_progression --message="Removing dependencies..." --weight=4
 
 # Remove metapackage and its dependencies
-ynh_remove_nodejs
+
+#=================================================
+# REMOVE SERVICE IN YUNOHOST
+#=================================================
+ynh_script_progression --message="Removing service in YunoHost..."
+
+yunohost service remove $app
 
 #=================================================
 # SPECIFIC REMOVE

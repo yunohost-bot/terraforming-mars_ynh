@@ -7,7 +7,7 @@ name = "Terraforming Mars "
 description.en = "Open-source online implementation of the great board game Terraforming mars."
 description.fr = "Implementation en ligne à code source ouvert de l’excellent jeu de plateau Terraforming Mars"
 
-version = "0.01~ynh1"
+version = "20231029~ynh1"
 
 maintainers = ["Thovi98"]
 
@@ -19,7 +19,7 @@ code = "https://github.com/terraforming-mars/terraforming-mars"
 [integration]
 yunohost = ">= 11.2.4"
 architectures = "all"
-multi_instance = true
+multi_instance = false
 
 ldap = false
 sso = false
@@ -41,13 +41,7 @@ ram.runtime = "50M"
     default = "visitors"
 
  [resources]
-      [resources.sources]
-
-        #[resources.sources.main]
-        #url = "https://github.com/terraforming-mars/terraforming-mars/archive/686fa15abaa69dccfe4d8a9e91bf077978b7ae20.zip"
-       # sha256 = "5e29130fb680ba79b667ad2c41445b975993d45354b0e6ae294fe302214290a2"
-       # autoupdate.strategy = "latest_github_commit"
-
+   
     [resources.system_user]
 
     [resources.install_dir]
@@ -59,7 +53,10 @@ ram.runtime = "50M"
     main.url = "/"
 
     [resources.ports]
-    main.port = 8080
+    main.default = 8080
+
+    [resources.apt]
+    packages = "postgresql, postgresql-contrib"
        
     [resources.database]
     type = "postgresql"
