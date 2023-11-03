@@ -57,6 +57,18 @@ chmod -R o-rwx "$install_dir"
 chown -R $app:$app "$install_dir"
 
 #=================================================
+# RECONFIGURE THE APP (UPDATE CONF, APPLY MIGRATIONS...)
+#=================================================
+# UPDATE A CONFIG FILE
+#=================================================
+ynh_script_progression --message="Updating a configuration file..." --weight=1
+
+ynh_add_config --template="../conf/.env" --destination="$install_dir/.env"
+
+chmod 600 "$install_dir/.env"
+chown $app:$app "$install_dir/.env"
+
+#=================================================
 # SETUP SYSTEMD
 #=================================================
 ynh_script_progression --message="Configuring a systemd service..."
@@ -75,18 +87,6 @@ ynh_script_progression --message="Configuring logrotate to manage application lo
 ynh_use_logrotate --specific_user=$app
 touch /var/log/$app/$app.log
 chown -R $app:www-data /var/log/$app/
-
-#=================================================
-# RECONFIGURE THE APP (UPDATE CONF, APPLY MIGRATIONS...)
-#=================================================
-# UPDATE A CONFIG FILE
-#=================================================
-ynh_script_progression --message="Updating a configuration file..." --weight=1
-
-ynh_add_config --template="../conf/.env" --destination="$install_dir/.env"
-
-chmod 600 "$install_dir/.env"
-chown $app:$app "$install_dir/.env"
 
 #=================================================
 # INTEGRATE SERVICE IN YUNOHOST
