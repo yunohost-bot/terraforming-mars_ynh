@@ -35,8 +35,9 @@ ynh_npm install --global npm@6.14.18
 #=================================================
 ynh_script_progression --message="Building app... This may take quiete some time" --weight=30
 
+ynh_secure_remove $install_dir/terraforming-mars
+
 cd $install_dir
-ynh_secure_remove terraforming-mars
 ynh_exec_warn_less git clone https://github.com/terraforming-mars/terraforming-mars.git
 
 cd $install_dir/terraforming-mars
@@ -98,7 +99,7 @@ yunohost service add $app --log="/var/log/$app/$app.log"
 #=================================================
 # START SYSTEMD SERVICE
 #=================================================
-ynh_script_progression --message="Starting a systemd service..." --weight=1
+ynh_script_progression --message="Starting a systemd service..."
 
 ynh_exec_warn_less ynh_systemd_action --service_name=$app --action="start" --log_path="/var/log/$app/$app.log" --line_match=""
 
