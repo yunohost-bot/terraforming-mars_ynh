@@ -39,6 +39,7 @@ ynh_script_progression --message="Reinstalling dependencies..." --weight=10
 
 # Define and install dependencies
 ynh_exec_warn_less ynh_install_nodejs --nodejs_version=$nodejs_version
+ynh_use_nodejs
 
 # Upgrade NPM
 ynh_npm install --global npm@6.14.18
