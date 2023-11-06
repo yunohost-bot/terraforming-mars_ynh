@@ -37,6 +37,7 @@ ynh_systemd_action --service_name=$app --action="stop" --log_path="/var/log/$app
 #=================================================
 
 cd $install_dir
+ynh_secure_remove terraforming-mars
 ynh_exec_warn_less git clone https://github.com/terraforming-mars/terraforming-mars.git
 
 cd $install_dir/terraforming-mars
