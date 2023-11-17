@@ -8,7 +8,7 @@
 nodejs_version=16
 
 # Terraforming-mars commit
-TM_version="7e36410"
+TM_version="38c69c7"
 
 #=================================================
 # PERSONAL HELPERS
