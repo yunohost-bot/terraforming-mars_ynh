@@ -41,6 +41,13 @@ ram.runtime = "50M"
     default = "visitors"
 
  [resources]
+
+    [resources.sources]
+
+      [resources.sources.main]
+        url = "https://codeload.github.com/terraforming-mars/terraforming-mars/tar.gz/78e5e5d0433e4d1632639ea7da1a1993672bd82a"
+        sha256 = "b41cfe80334495a4653bc3933298597c232474c309c5993e388068e33d7f13ce"
+        autoupdate.strategy = "latest_github_tag"
    
     [resources.system_user]
 
