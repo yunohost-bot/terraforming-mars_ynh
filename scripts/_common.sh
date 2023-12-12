@@ -5,7 +5,7 @@
 #=================================================
 
 # nodejs version
-nodejs_version=16
+nodejs_version=16.13.2
 
 # Terraforming-mars commit
 TM_version="78e5e5d"
