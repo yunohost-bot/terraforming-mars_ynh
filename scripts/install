@@ -46,7 +46,7 @@ ynh_add_nginx_config
 # BUILD APP
 #=================================================
 
-pushd $install_dir/terraforming-mars
+pushd $install_dir
     ynh_use_nodejs
 
 	ynh_script_progression --message="npm install... This can be very long, be patient !" --weight=18
