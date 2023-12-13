@@ -53,6 +53,7 @@ pushd $install_dir
 	ynh_exec_warn_less ynh_exec_as $app env $ynh_node_load_PATH $ynh_npm ci --quiet --production --prefer-offline --network-timeout=100000
 
 	ynh_script_progression --message="npm run build... This can be very long, be patient !" --weight=25
+	export SOURCE_VERSION="$(cat YNH_APP_BASEDIR/manifest.toml | toml_to_json | jq -r ".resources.sources.main.url" | awk -F/ '{ print $NF }')"
 	ynh_exec_warn_less ynh_exec_as $app env $ynh_node_load_PATH $ynh_npm run build
 popd
 
