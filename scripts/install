@@ -43,6 +43,20 @@ ynh_add_nginx_config
 # SPECIFIC SETUP
 #=================================================
 #=================================================
+# ADD A CONFIGURATION
+#=================================================
+ynh_script_progression --message="Adding a configuration file..."
+
+
+key=$(ynh_string_random --length=45 | base64)
+ynh_app_setting_set --app=$app --key=key --value=$key
+
+ynh_add_config --template="../conf/.env" --destination="$install_dir/.env"
+
+chmod 600 "$install_dir/.env"
+chown $app:$app "$install_dir/.env"
+
+#=================================================
 # BUILD APP
 #=================================================
 
@@ -61,20 +75,6 @@ popd
 chmod 750 "$install_dir"
 chmod -R o-rwx "$install_dir"
 chown -R $app:$app "$install_dir"
-
-#=================================================
-# ADD A CONFIGURATION
-#=================================================
-ynh_script_progression --message="Adding a configuration file..."
-
-
-key=$(ynh_string_random --length=45 | base64)
-ynh_app_setting_set --app=$app --key=key --value=$key
-
-ynh_add_config --template="../conf/.env" --destination="$install_dir/.env"
-
-chmod 600 "$install_dir/.env"
-chown $app:$app "$install_dir/.env"
 
 #=================================================
 # SETUP SYSTEMD
