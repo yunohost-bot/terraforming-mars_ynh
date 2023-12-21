@@ -1,0 +1,1 @@
+It is possible to have a list of all games currently available on the server via following link: https://__DOMAIN____PATH__/games-overview?serverId=__KEY__
