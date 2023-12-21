@@ -19,7 +19,7 @@ code = "https://github.com/terraforming-mars/terraforming-mars"
 [integration]
 yunohost = ">= 11.2.4"
 architectures = "all"
-multi_instance = false
+multi_instance = true
 
 ldap = false
 sso = false
