@@ -29,9 +29,9 @@ This is an open-source online implementation of the great board game Terraformin
 
 ## Documentation and resources
 
-* Upstream app code repository: <https://github.com/terraforming-mars/terraforming-mars>
-* YunoHost Store: <https://apps.yunohost.org/app/terraforming-mars>
-* Report a bug: <https://github.com/YunoHost-Apps/terraforming-mars_ynh/issues>
+- Upstream app code repository: <https://github.com/terraforming-mars/terraforming-mars>
+- YunoHost Store: <https://apps.yunohost.org/app/terraforming-mars>
+- Report a bug: <https://github.com/YunoHost-Apps/terraforming-mars_ynh/issues>
 
 ## Developer info
 

@@ -28,9 +28,9 @@ Cette application est une implémentation en ligne et open source de l’excelle
 
 ## Documentations et ressources
 
-* Dépôt de code officiel de l’app : <https://github.com/terraforming-mars/terraforming-mars>
-* YunoHost Store: <https://apps.yunohost.org/app/terraforming-mars>
-* Signaler un bug : <https://github.com/YunoHost-Apps/terraforming-mars_ynh/issues>
+- Dépôt de code officiel de l’app : <https://github.com/terraforming-mars/terraforming-mars>
+- YunoHost Store : <https://apps.yunohost.org/app/terraforming-mars>
+- Signaler un bug : <https://github.com/YunoHost-Apps/terraforming-mars_ynh/issues>
 
 ## Informations pour les développeurs
 
