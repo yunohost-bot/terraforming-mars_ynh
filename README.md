@@ -19,7 +19,7 @@ If you don't have YunoHost, please consult [the guide](https://yunohost.org/#/in
 This is an open-source online implementation of the great board game Terraforming mars. It is not affiliated with FryxGames, Asmodee Digital or Steam in any way.
 
 
-**Shipped version:** 2024.02.28~ynh1
+**Shipped version:** 2024.03.04~ynh1
 
 **Demo:** https://terraforming-mars.herokuapp.com/
 
@@ -29,9 +29,9 @@ This is an open-source online implementation of the great board game Terraformin
 
 ## Documentation and resources
 
-* Upstream app code repository: <https://github.com/terraforming-mars/terraforming-mars>
-* YunoHost Store: <https://apps.yunohost.org/app/terraforming-mars>
-* Report a bug: <https://github.com/YunoHost-Apps/terraforming-mars_ynh/issues>
+- Upstream app code repository: <https://github.com/terraforming-mars/terraforming-mars>
+- YunoHost Store: <https://apps.yunohost.org/app/terraforming-mars>
+- Report a bug: <https://github.com/YunoHost-Apps/terraforming-mars_ynh/issues>
 
 ## Developer info
 
