@@ -9,7 +9,7 @@ It shall NOT be edited by hand.
 
 [![Install Terraforming Mars  with YunoHost](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=terraforming-mars)
 
-*[Read this README is other languages.](./ALL_README.md)*
+*[Read this README in other languages.](./ALL_README.md)*
 
 > *This package allows you to install Terraforming Mars  quickly and simply on a YunoHost server.*  
 > *If you don't have YunoHost, please consult [the guide](https://yunohost.org/install) to learn how to install it.*
@@ -19,7 +19,7 @@ It shall NOT be edited by hand.
 This is an open-source online implementation of the great board game Terraforming mars. It is not affiliated with FryxGames, Asmodee Digital or Steam in any way.
 
 
-**Shipped version:** 2024.03.20~ynh1
+**Shipped version:** 2024.04.03~ynh1
 
 **Demo:** <https://terraforming-mars.herokuapp.com/>
 
