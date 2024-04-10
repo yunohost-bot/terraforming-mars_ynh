@@ -7,7 +7,7 @@ name = "Terraforming Mars "
 description.en = "Open-source online implementation of the great board game Terraforming mars."
 description.fr = "Implementation en ligne à code source ouvert de l’excellent jeu de plateau Terraforming Mars"
 
-version = "2024.04.08~ynh1"
+version = "2024.04.09~ynh1"
 
 maintainers = ["Thovi98"]
 
@@ -45,8 +45,8 @@ ram.runtime = "50M"
     [resources.sources]
 
       [resources.sources.main]
-        url = "https://github.com/terraforming-mars/terraforming-mars/archive/e9c7a337aad877cfb03e12edc70f0aee8d6129e6.tar.gz"
-        sha256 = "2ca2c470f6e73b9484c017887d1fe90e92e05aefbef31a8a50fe0e7bad0a3502"
+        url = "https://github.com/terraforming-mars/terraforming-mars/archive/56a0b5f1075ce9112bb779da402830446039ce9a.tar.gz"
+        sha256 = "005c5ced44917c1cde0fa9f8fa2b0c4adbbb7fd4d7932babdbff0647b27fe8fc"
         in_subdir = true
         autoupdate.strategy = "latest_github_commit"
    
