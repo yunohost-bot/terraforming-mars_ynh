@@ -19,7 +19,7 @@ Ini TIDAK boleh diedit dengan tangan.
 This is an open-source online implementation of the great board game Terraforming mars. It is not affiliated with FryxGames, Asmodee Digital or Steam in any way.
 
 
-**Versi terkirim:** 2024.07.21~ynh1
+**Versi terkirim:** 2024.07.26~ynh1
 
 **Demo:** <https://terraforming-mars.herokuapp.com/>
 
@@ -29,7 +29,7 @@ This is an open-source online implementation of the great board game Terraformin
 
 ## Dokumentasi dan sumber daya
 
-- Repositori kode aplikasi hulu: <https://github.com/terraforming-mars/terraforming-mars>
+- Depot kode aplikasi hulu: <https://github.com/terraforming-mars/terraforming-mars>
 - Gudang YunoHost: <https://apps.yunohost.org/app/terraforming-mars>
 - Laporkan bug: <https://github.com/YunoHost-Apps/terraforming-mars_ynh/issues>
 
